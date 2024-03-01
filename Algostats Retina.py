@@ -19,7 +19,7 @@ from docx.shared import Inches
 from datetime import date
 
 st.set_page_config(
-    page_title="RetinAI",
+    page_title="ALGOSTATS Retina",
     page_icon="assets/icon.png",
     layout="centered", )
 
@@ -195,7 +195,7 @@ col2.image("assets/logo.png")
 new_line(2)
 
 st.write("""
-**RetinAI** is a web application that allows you to upload your retinal images and get a prediction of the disease you may have.
+**Algostats Retina** is a web application that allows you to upload your retinal images and get a prediction of the disease you may have.
 We use a deep learning technology to predict the level of the disease that you have with 85% accuracy.
 """)
 
@@ -256,8 +256,8 @@ if colb.button("🔮 Predict", use_container_width=True):
 if input_data:
 
     # Create Docx Report
-    template_file = Document("RetinAI_Report_Template.docx")
-    output_file = r"RetinAI_Report.docx"
+    template_file = Document("Algostats Retina_Report_Template.docx")
+    output_file = r"Algostats Retina_Report.docx"
 
     edit_docx_template(template_file, output_file, input_data, output_file)
 
@@ -268,23 +268,23 @@ if input_data:
     convert(output_file)
 
 
-    st.markdown("<h4 align='center'>RetinAI Report</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 align='center'>Algostats Retina Report</h4>", unsafe_allow_html=True)
 
     # Convert PDF to Image    
-    filepath = "RetinAI_Report.pdf"
+    filepath = "Algostats Retina_Report.pdf"
     pdf = pdfium.PdfDocument(filepath)
 
     page = pdf[0]
     pil_image = page.render(scale=4).to_pil()
-    pil_image.save("RetinAI_Report_Image.jpg")
+    pil_image.save("Algostats Retina_Report_Image.jpg")
 
-    st.image("RetinAI_Report_Image.jpg", use_column_width=True)
+    st.image("Algostats Retina_Report_Image.jpg", use_column_width=True)
 
     # Download the report
     col1, col2, col3 = st.columns([1,1,1])
     if col2.download_button("📥 Download Report", 
                             data=open(filepath, 'rb').read(), 
-                            file_name="RetinAI_Report.pdf", 
+                            file_name="Algostats Retina_Report.pdf", 
                             mime="application/pdf",):
         
         pass
